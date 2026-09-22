@@ -96,21 +96,23 @@ document.addEventListener("change", function (event) {
 });
 
 
-// Delete Task
 document.addEventListener("click", function (event) {
 
-    if (event.target.classList.contains("delete-btn")) {
+    const deleteButton = event.target.closest(".delete-btn");
 
-        const taskCard = event.target.closest(".task-card");
+    if (deleteButton) {
 
-        taskCard.remove();
+        const taskCard = deleteButton.closest(".task-card");
 
-        updateProgress();
-        saveTasks();
+        if (taskCard) {
+            taskCard.remove();
+
+            updateProgress();
+            saveTasks();
+        }
     }
 
 });
-
 
 // Save all tasks
 function saveTasks() {

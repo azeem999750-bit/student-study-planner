@@ -25,21 +25,48 @@
             <p>Completed: 0%</p>
         </section>
 
+        
         <!-- Task Section -->
-        <section class="task-section">
-            <h2>My Study Tasks</h2>
+<section class="task-section">
 
-            <div class="task-card">
-                <h3>Mathematics</h3>
-                <p>Complete Chapter 1</p>
-                <input type="checkbox">
-            </div>
+    <h2>My Study Tasks</h2>
 
-            <div class="task-card">
-                <h3>Programming</h3>
-                <p>Practice C++ Basics</p>
-                <input type="checkbox">
-            </div>
+    <button id="addTaskBtn">+ Add Task</button>
+
+    <!-- Task Form -->
+    <div id="taskForm">
+
+        <input 
+            type="text" 
+            id="subjectInput" 
+            placeholder="Enter subject"
+        >
+
+        <input 
+            type="text" 
+            id="taskInput" 
+            placeholder="Enter task"
+        >
+
+        <button id="saveTaskBtn">Save Task</button>
+
+    </div>
+
+    <!-- Existing Tasks -->
+    <div class="task-card">
+        <h3>Mathematics</h3>
+        <p>Complete Chapter 1</p>
+        <input type="checkbox">
+    </div>
+
+    <div class="task-card">
+        <h3>Programming</h3>
+        <p>Practice C++ Basics</p>
+        <input type="checkbox">
+    </div>
+
+</section>
+         
 
         </section>
 

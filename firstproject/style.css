@@ -64,3 +64,35 @@ h2 {
     color: #666;
     margin-bottom: 10px;
 }
+
+/* Add Task Button */
+#addTaskBtn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+/* Task Form */
+#taskForm {
+    display: none;
+    margin-bottom: 20px;
+}
+
+/* Form Inputs */
+#taskForm input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* Save Button */
+#saveTaskBtn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}

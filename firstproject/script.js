@@ -39,6 +39,8 @@ saveTaskBtn.addEventListener("click", function () {
     // Add task to page
     taskSection.appendChild(taskCard);
 
+    updateProgress();
+
     // Clear inputs
     subjectInput.value = "";
     taskInput.value = "";
@@ -59,6 +61,29 @@ document.addEventListener("change", function (event) {
         } else {
             taskCard.classList.remove("completed-task");
         }
+        updateProgress();
     }
 
 });
+
+// Update Progress
+function updateProgress() {
+
+    const tasks = document.querySelectorAll(".task-checkbox");
+    const completedTasks = document.querySelectorAll(
+        ".task-checkbox:checked"
+    );
+
+    if (tasks.length === 0) {
+        document.getElementById("progressText").textContent =
+            "Completed: 0%";
+        return;
+    }
+
+    const percentage = Math.round(
+        (completedTasks.length / tasks.length) * 100
+    );
+
+    document.getElementById("progressText").textContent =
+        "Completed: " + percentage + "%";
+}

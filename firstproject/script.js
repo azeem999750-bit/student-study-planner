@@ -29,13 +29,12 @@ saveTaskBtn.addEventListener("click", function () {
     const taskCard = document.createElement("div");
 
     taskCard.classList.add("task-card");
-
-    taskCard.innerHTML = `
-        <h3>${subject}</h3>
-        <p>${task}</p>
-        <input type="checkbox" class="task-checkbox">
-    `;
-
+       taskCard.innerHTML = `
+    <h3>${subject}</h3>
+    <p>${task}</p>
+    <input type="checkbox" class="task-checkbox">
+    <button class="delete-btn">🗑️ Delete</button>
+`;
     // Add task to page
     taskSection.appendChild(taskCard);
 
@@ -87,3 +86,17 @@ function updateProgress() {
     document.getElementById("progressText").textContent =
         "Completed: " + percentage + "%";
 }
+
+// Delete Task
+document.addEventListener("click", function (event) {
+
+    if (event.target.classList.contains("delete-btn")) {
+
+        const taskCard = event.target.closest(".task-card");
+
+        taskCard.remove();
+
+        updateProgress();
+    }
+
+});

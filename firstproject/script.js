@@ -46,3 +46,19 @@ saveTaskBtn.addEventListener("click", function () {
     // Hide form
     taskForm.style.display = "none";
 });
+
+// Complete Task
+document.addEventListener("change", function (event) {
+
+    if (event.target.classList.contains("task-checkbox")) {
+
+        const taskCard = event.target.closest(".task-card");
+
+        if (event.target.checked) {
+            taskCard.classList.add("completed-task");
+        } else {
+            taskCard.classList.remove("completed-task");
+        }
+    }
+
+});

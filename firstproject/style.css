@@ -96,3 +96,9 @@ h2 {
     border-radius: 6px;
     cursor: pointer;
 }
+
+/* Completed Task */
+.completed-task {
+    text-decoration: line-through;
+    opacity: 0.6;
+}

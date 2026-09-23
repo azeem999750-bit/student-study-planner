@@ -4,6 +4,7 @@ const taskForm = document.getElementById("taskForm");
 const saveTaskBtn = document.getElementById("saveTaskBtn");
 const subjectInput = document.getElementById("subjectInput");
 const taskInput = document.getElementById("taskInput");
+const priorityInput = document.getElementById("priorityInput");
 
 const taskSection = document.querySelector(".task-section");
 const progressText = document.getElementById("progressText");
@@ -41,6 +42,7 @@ saveTaskBtn.addEventListener("click", function () {
 
     const subject = subjectInput.value.trim();
     const task = taskInput.value.trim();
+    const priority = priorityInput.value;
 
     if (subject === "" || task === "") {
         alert("Please enter subject and task.");
@@ -55,6 +57,9 @@ saveTaskBtn.addEventListener("click", function () {
     taskCard.innerHTML = `
         <h3>${subject}</h3>
         <p>${task}</p>
+        <p class="task-priority priority-${priority.toLowerCase()}">
+    Priority: ${priority}
+</p>
         <input type="checkbox" class="task-checkbox">
         <button class="delete-btn">🗑️ Delete</button>
     `;
@@ -128,6 +133,7 @@ function saveTasks() {
         tasks.push({
             subject: subject,
             task: task,
+            priority: priority,
             completed: completed
         });
 
@@ -160,11 +166,14 @@ function loadTasks() {
         taskCard.classList.add("task-card");
 
         taskCard.innerHTML = `
-            <h3>${taskData.subject}</h3>
-            <p>${taskData.task}</p>
-            <input type="checkbox" class="task-checkbox">
-            <button class="delete-btn">🗑️ Delete</button>
-        `;
+    <h3>${taskData.subject}</h3>
+    <p>${taskData.task}</p>
+    <p class="task-priority priority-${(taskData.priority || "Medium").toLowerCase()}">
+        Priority: ${taskData.priority || "Medium"}
+    </p>
+    <input type="checkbox" class="task-checkbox">
+    <button class="delete-btn">🗑️ Delete</button>
+`;
 
         const checkbox = taskCard.querySelector(".task-checkbox");
 

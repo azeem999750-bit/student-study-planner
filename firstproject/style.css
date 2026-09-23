@@ -111,3 +111,20 @@ h2 {
     border-radius: 6px;
     cursor: pointer;
 }
+
+.task-priority {
+    font-weight: bold;
+}
+
+.task-priority.priority-high {
+    color: red;
+}
+
+.task-priority.priority-medium {
+    color: orange;
+}
+
+.task-priority.priority-low {
+    color: green;
+}
+

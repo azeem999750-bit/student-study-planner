@@ -5,6 +5,7 @@ const saveTaskBtn = document.getElementById("saveTaskBtn");
 const subjectInput = document.getElementById("subjectInput");
 const taskInput = document.getElementById("taskInput");
 const priorityInput = document.getElementById("priorityInput");
+const deadlineInput = document.getElementById("deadlineInput");
 
 const taskSection = document.querySelector(".task-section");
 const progressText = document.getElementById("progressText");
@@ -43,6 +44,7 @@ saveTaskBtn.addEventListener("click", function () {
     const subject = subjectInput.value.trim();
     const task = taskInput.value.trim();
     const priority = priorityInput.value;
+    const deadline = deadlineInput.value;
 
     if (subject === "" || task === "") {
         alert("Please enter subject and task.");
@@ -60,6 +62,7 @@ saveTaskBtn.addEventListener("click", function () {
         <p class="task-priority priority-${priority.toLowerCase()}">
     Priority: ${priority}
 </p>
+<p class="task-deadline">Deadline: ${deadline || "Not set"}</p>
         <input type="checkbox" class="task-checkbox">
         <button class="delete-btn">🗑️ Delete</button>
     `;
@@ -128,12 +131,17 @@ function saveTasks() {
 
         const subject = taskCard.querySelector("h3").textContent;
         const task = taskCard.querySelector("p").textContent;
+        const priorityText = taskCard.querySelector(".task-priority").textContent;
+        const priority = priorityText.replace("Priority:", "").trim();
+        const deadlineText = taskCard.querySelector(".task-deadline").textContent;
+        const deadline = deadlineText.replace("Deadline:", "").trim();
         const completed = taskCard.querySelector(".task-checkbox").checked;
 
         tasks.push({
             subject: subject,
             task: task,
             priority: priority,
+            deadline: deadline,
             completed: completed
         });
 
@@ -171,6 +179,9 @@ function loadTasks() {
     <p class="task-priority priority-${(taskData.priority || "Medium").toLowerCase()}">
         Priority: ${taskData.priority || "Medium"}
     </p>
+    <p class="task-deadline">
+    Deadline: ${taskData.deadline || "Not set"}
+</p>
     <input type="checkbox" class="task-checkbox">
     <button class="delete-btn">🗑️ Delete</button>
 `;

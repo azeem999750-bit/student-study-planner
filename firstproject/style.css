@@ -121,7 +121,7 @@ h2 {
 }
 
 .task-priority.priority-medium {
-    color: orange;
+    color: rgb(0, 0, 0);
 }
 
 .task-priority.priority-low {

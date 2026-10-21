@@ -202,3 +202,54 @@ function loadTasks() {
 
 // Load tasks when page starts
 loadTasks();
+
+// Step 13.3 - Task Filters
+
+let currentFilter = "all";
+
+// Tasks ko filter karne ka function
+function applyTaskFilter() {
+    const taskCards = document.querySelectorAll(".task-card");
+
+    taskCards.forEach(function(taskCard) {
+        const checkbox = taskCard.querySelector(".task-checkbox");
+        const priorityElement = taskCard.querySelector(".task-priority");
+
+        const isCompleted = checkbox.checked;
+
+        const priority = priorityElement.textContent
+            .replace("Priority:", "")
+            .trim()
+            .toLowerCase();
+
+        let showTask = true;
+
+        if (currentFilter === "pending") {
+            showTask = !isCompleted;
+        } 
+        else if (currentFilter === "completed") {
+            showTask = isCompleted;
+        } 
+        else if (currentFilter === "high") {
+            showTask = priority === "high";
+        }
+
+        taskCard.style.display = showTask ? "" : "none";
+    });
+}
+
+// Filter buttons par click karne ka event
+document.addEventListener("click", function(event) {
+    if (event.target.classList.contains("filter-btn")) {
+
+        currentFilter = event.target.dataset.filter;
+
+        document.querySelectorAll(".filter-btn").forEach(function(button) {
+            button.classList.remove("active");
+        });
+
+        event.target.classList.add("active");
+
+        applyTaskFilter();
+    }
+});

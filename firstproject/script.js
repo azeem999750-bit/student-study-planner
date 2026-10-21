@@ -253,3 +253,27 @@ document.addEventListener("click", function(event) {
         applyTaskFilter();
     }
 });
+
+// Step 14 - Search Tasks
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("input", function() {
+    const searchText = searchInput.value.toLowerCase().trim();
+
+    const taskCards = document.querySelectorAll(".task-card");
+
+    taskCards.forEach(function(taskCard) {
+        const subject = taskCard.querySelector("h3")
+            .textContent.toLowerCase();
+
+        const taskDescription = taskCard.querySelector("p")
+            .textContent.toLowerCase();
+
+        const matchesSearch =
+            subject.includes(searchText) ||
+            taskDescription.includes(searchText);
+
+        taskCard.style.display = matchesSearch ? "" : "none";
+    });
+});

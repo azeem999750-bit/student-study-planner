@@ -156,3 +156,23 @@ h2 {
     color: white;
     border-color: #2563eb;
 }
+
+/* Step 14 - Search Box Styling */
+
+.task-search {
+    margin: 15px 0 20px;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+#searchInput:focus {
+    border-color: #2563eb;
+}

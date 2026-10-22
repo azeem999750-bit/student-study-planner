@@ -176,3 +176,27 @@ h2 {
 #searchInput:focus {
     border-color: #2563eb;
 }
+
+/* Step 15 - Task Sorting */
+
+.task-sorting {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0 20px;
+}
+
+.task-sorting label {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#sortTasks {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: white;
+    font-size: 14px;
+    cursor: pointer;
+}

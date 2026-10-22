@@ -277,3 +277,65 @@ searchInput.addEventListener("input", function() {
         taskCard.style.display = matchesSearch ? "" : "none";
     });
 });
+
+// Step 15 - Task Sorting
+
+const sortTasks = document.getElementById("sortTasks");
+
+sortTasks.addEventListener("change", function() {
+    const taskContainer = document.querySelector(".task-section");
+
+    const taskCards = Array.from(
+        taskContainer.querySelectorAll(".task-card")
+    );
+
+    taskCards.forEach(function(taskCard, index) {
+    if (taskCard.dataset.originalOrder === undefined) {
+        taskCard.dataset.originalOrder = index;
+    }
+});
+    
+
+
+const sortType = sortTasks.value;
+
+    taskCards.sort(function(a, b) {
+        if (sortType === "priority") {
+            const priorityOrder = {
+                high: 1,
+                medium: 2,
+                low: 3
+            };
+
+            const priorityA = a.querySelector(".task-priority")
+                .textContent.replace("Priority:", "").trim().toLowerCase();
+
+            const priorityB = b.querySelector(".task-priority")
+                .textContent.replace("Priority:", "").trim().toLowerCase();
+
+            return priorityOrder[priorityA] - priorityOrder[priorityB];
+        }
+
+        if (sortType === "deadline") {
+            const deadlineA = a.querySelector(".task-deadline")
+                .textContent.replace("Deadline:", "").trim();
+
+            const deadlineB = b.querySelector(".task-deadline")
+                .textContent.replace("Deadline:", "").trim();
+
+            if (deadlineA === "Not set") return 1;
+            if (deadlineB === "Not set") return -1;
+
+            return deadlineA.localeCompare(deadlineB);
+        }
+
+        if (sortType === "default") {
+    return Number(a.dataset.originalOrder) -
+           Number(b.dataset.originalOrder);
+}
+    });
+
+    taskCards.forEach(function(taskCard) {
+        taskContainer.appendChild(taskCard);
+    });
+});

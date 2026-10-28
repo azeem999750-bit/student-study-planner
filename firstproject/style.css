@@ -234,3 +234,60 @@ h2 {
     border-radius: 6px;
     cursor: pointer;
 }
+
+/* Step 17 - Responsive Design */
+
+@media screen and (max-width: 768px) {
+    .task-card {
+        padding: 14px;
+    }
+
+    .task-sorting {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    #sortTasks {
+        width: 100%;
+    }
+
+    .task-search {
+        width: 100%;
+    }
+
+    #searchInput {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* Step 17.3 - Mobile Filter Buttons */
+
+@media screen and (max-width: 768px) {
+    .task-filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .task-filters button {
+        margin: 0;
+    }
+}
+
+/* Step 17.4 - Mobile Task Card Improvements */
+
+@media screen and (max-width: 768px) {
+    .task-card {
+        overflow-wrap: anywhere;
+    }
+
+    .task-card button {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+
+    .task-card h3 {
+        font-size: 17px;
+    }
+}
